@@ -5,7 +5,7 @@ from .department import Department
 
 
 class JobPosition(models.Model):
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    department = models.ForeignKey( Department, on_delete=models.CASCADE, related_name="job_positions")
     title = models.CharField(max_length=100)
     description = models.TextField()
     required_skills = ArrayField(models.CharField(max_length=100))

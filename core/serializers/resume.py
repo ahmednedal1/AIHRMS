@@ -6,8 +6,7 @@ class ResumeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resume
         fields = '__all__'
-        read_only_fields = ('id', 'updated_at')
-
+        read_only_fields = ('id', 'uploaded_at')
 
     def validate_file(self, value):
         extension = Path(value.name).suffix.lower()

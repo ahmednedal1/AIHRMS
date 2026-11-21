@@ -1,15 +1,15 @@
 from django.db import models
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.postgres.fields import ArrayField
 from .candidate import Candidate
 from .job_position import JobPosition
 
 class ScreeningResult(models.Model):
-    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    job_position = models.ForeignKey(JobPosition, on_delete=models.CASCADE)
-    score = models.IntegerField()
-    strengths = ArrayField(models.CharField(max_length=100))
-    missing_skills = ArrayField(models.CharField(max_length=100))
+    candidate = models.ForeignKey( Candidate, on_delete=models.CASCADE, related_name="screening_results")
+    job_position = models.ForeignKey( JobPosition, on_delete=models.CASCADE, related_name="screening_results")
+    score = models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(100)])
+    strengths = ArrayField(models.CharField(max_length=100), default=list, blank=True)
+    missing_skills = ArrayField(models.CharField(max_length=100), default=list, blank=True)
     recommendation = models.CharField(max_length=7,
     choices = [
         ("proceed", "Proceed"),

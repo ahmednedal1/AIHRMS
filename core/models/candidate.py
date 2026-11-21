@@ -3,8 +3,8 @@
 
 class Candidate(models.Model):
     full_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.IntegerField()
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=20, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 

@@ -28,17 +28,13 @@ class CandidateAdmin(admin.ModelAdmin):
 
     @admin.register(ScreeningResult)
     class ScreeningResultAdmin(admin.ModelAdmin):
-        list_display = (
-            "id", "candidate", "job_position", "score", "recommendation", "generated_at",
-        )
+        list_display = ("id", "candidate", "job_position", "score", "recommendation", "generated_at")
         search_fields = ("candidate__full_name", "job_position__title", "summary")
         list_filter = ("recommendation", "generated_at")
 
     @admin.register(InterviewQuestionSet)
     class InterviewQuestionSetAdmin(admin.ModelAdmin):
-        list_display = (
-            "id", "candidate", "job_position", "screening_result", "generated_at",
-        )
+        list_display = ("id", "candidate", "job_position", "screening_result", "generated_at")
         search_fields = ("candidate__full_name", "job_position__title")
         list_filter = ("generated_at",)
 # Register your models here.
