@@ -1,0 +1,6 @@
+from .candidate_views import create_candidate
+from .department_views import create_department
+from .interview_question_set_views import interview_question_set_detail
+from .job_position_views import create_job_position
+from .resume_views import upload_resume
+from .screening_result_views import screening_result_detail

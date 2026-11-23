@@ -1,0 +1,31 @@
+interview_question_task:
+  description: |
+    Candidate resume: {candidate_resume}
+    Job title: {job_title}
+    Job description: {job_description}
+    Screening report: {screening_report}
+
+    Write three groups of interview questions:
+
+    1. Technical questions: Verify the candidate's stated skills against the
+       job requirements and probe missing skills identified in the screening report.
+    2. Behavioral questions: Ask for examples of communication, teamwork,
+       and other soft skills. Assess how those examples relate to the role.
+    3. Follow-up questions: Dig into specific projects, responsibilities,
+       results, or gaps mentioned in the resume or screening report.
+
+    Base the questions on the supplied information. When a skill or experience
+    is unclear, ask the candidate to explain it or give an example.
+
+  expected_output: |
+    Return a single valid JSON object with exactly the three keys shown below.
+    Each value must be a list of strings. Write questions tailored to the
+    supplied inputs. Return only the JSON object, without Markdown fences.
+
+    {
+      "technical_questions": ["How did you use Python in a project?"],
+      "behavioral_questions": ["Tell me about a time you resolved a disagreement on your team."],
+      "follow_up_questions": ["What was your contribution to the project described in your resume?"]
+    }
+
+  agent: interview_question_generator
